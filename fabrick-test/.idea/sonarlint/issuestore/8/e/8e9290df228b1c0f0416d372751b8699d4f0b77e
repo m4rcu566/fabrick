@@ -1,0 +1,23 @@
+
+m
+java:S1128"PRemove this unused import 'io.swagger.v3.oas.annotations.ExternalDocumentation'.(ÚÙƒğ8£Ñâû³1
+g
+java:S1128"ERemove this unused import 'io.swagger.v3.oas.annotations.Parameters'.(‘ÖÚêøÿÿÿÿ8£Ñâû³1
+i
+java:S1128"LRemove this unused import 'io.swagger.v3.oas.annotations.media.ArraySchema'.(‚ñãØ8£Ñâû³1
+y
+java:S1128"WRemove this unused import 'io.swagger.v3.oas.annotations.security.SecurityRequirement'.(Œ¶Ìùÿÿÿÿ8£Ñâû³1
+b
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8£Ñâû³1
+a
+java:S1128"?Remove this unused import 'org.springframework.http.MediaType'.(úŸİ¯şÿÿÿÿ8£Ñâû³1
+q
+java:S1128"URemove this unused import 'org.springframework.web.context.request.NativeWebRequest'.(¨øØS8£Ñâû³1
+n
+java:S1128"LRemove this unused import 'org.springframework.web.multipart.MultipartFile'.(ôŸœÿÿÿÿÿ8£Ñâû³1
+M
+java:S1128 "+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8£Ñâû³1
+L
+java:S1128!"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8£Ñâû³1
+Q
+java:S1128""/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8£Ñâû³1

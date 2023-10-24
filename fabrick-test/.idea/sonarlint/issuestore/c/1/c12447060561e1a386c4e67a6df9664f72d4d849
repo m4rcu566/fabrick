@@ -1,0 +1,12 @@
+
+Q
+java:S3740"/Provide the parametrized type for this generic.(þ¼çüþÿÿÿÿ8´â×£´1
+Q
+java:S3740"/Provide the parametrized type for this generic.(ô¯¬ûþÿÿÿÿ8µâ×£´1
+{
+java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "entity".(ÐÎŽÀ8Î¼ŽÍ´1
+\
+java:S1118
+":Add a private constructor to hide the implicit public one.(ôÖ®¬ùÿÿÿÿ8Áâ×£´1
+©
+java:S1130"‹Remove the declaration of thrown exception 'com.fasterxml.jackson.core.JsonProcessingException', as it cannot be thrown from method's body.(«Ïú 8Åâ×£´1

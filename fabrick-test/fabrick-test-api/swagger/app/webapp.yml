@@ -1,0 +1,242 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  version: 1.0.11
+servers:
+  - url: https://sandbox.platfr.io
+paths:
+  /api/test/account/{accountId}/balance:
+    get:
+      tags:
+        - accountOperations
+      summary: Finds accounts
+      description: Multiple status values can be provided with comma separated strings
+      operationId: getBalance
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - name: X-Time-Zone
+          in: header
+          schema:
+            type: string
+            default: Europe/Rome
+          required: false
+        - name: Auth-Schema
+          in: header
+          schema:
+            type: string
+            default: S2S
+          required: false
+        - name: apikey
+          in: header
+          schema:
+            type: string
+            default: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+          required: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiResponse'
+        '400':
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '500':
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+  /api/test/account/{accountId}/transactions:
+    get:
+      tags:
+        - accountOperations
+      summary: Finds accounts
+      description: Multiple status values can be provided with comma separated strings
+      operationId: getHistoryTransaction
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - name: fromDate
+          in: query
+          schema:
+            type: string
+            format: date
+            pattern: '^\d{4}-\d{2}-\d{2}$'
+          required: true
+        - name: toDate
+          in: query
+          schema:
+            type: string
+            format: date
+            pattern: '^\d{4}-\d{2}-\d{2}$'
+          required: true
+        - name: X-Time-Zone
+          in: header
+          schema:
+            type: string
+            default: Europe/Rome
+          required: false
+        - name: Auth-Schema
+          in: header
+          schema:
+            type: string
+            default: S2S
+          required: false
+        - name: apikey
+          in: header
+          schema:
+            type: string
+            default: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+          required: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiResponse'
+        '400':
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '500':
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+  /api/test/account/{accountId}/payments/money-transfers:
+    post:
+      tags:
+        - accountOperations
+      summary: Finds accounts
+      description: Multiple status values can be provided with comma separated strings
+      operationId: requestMoneyTransfer
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - name: X-Time-Zone
+          in: header
+          schema:
+            type: string
+            default: Europe/Rome
+          required: false
+        - name: Auth-Schema
+          in: header
+          schema:
+            type: string
+            default: S2S
+          required: false
+        - name: apikey
+          in: header
+          schema:
+            type: string
+            default: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/paymentRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiResponse'
+        '400':
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '500':
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+
+components:
+  schemas:
+    paymentRequest:
+      type: object
+      properties:
+        creditor:
+          $ref: '#/components/schemas/Creditor'
+        executionDate:
+          type: string
+          format: date
+        description:
+          type: string
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+    Creditor:
+      type: object
+      properties:
+        name:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+    Account:
+      type: object
+      properties:
+        accountCode:
+          type: string
+        bicCode:
+          type: string
+    CustomErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
+        payload:
+          type: object
+    error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        params:
+          type: string
+    apiResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/error'
+        payload:
+          type: object

@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  version: 1.0.11
+servers:
+  - url: https://sandbox.platfr.io
+paths:
+  /api/gbs/banking/v4.0/accounts/{accountId}/balance:
+    get:
+      tags:
+        - account
+      summary: Finds accounts
+      description: Multiple status values can be provided with comma separated strings
+      operationId: getBalance
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - name: X-Time-Zone
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: Auth-Schema
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: apikey
+          in: header
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid status value
+  /api/gbs/banking/v4.0/accounts/{accountId}/transactions:
+    get:
+      tags:
+        - account
+      summary: Finds accounts
+      description: Multiple status values can be provided with comma separated strings
+      operationId: getTransactions
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - name: fromAccountingDate
+          in: query
+          schema:
+            type: string
+            format: date
+          required: true
+        - name: toAccountingDate
+          in: query
+          schema:
+            type: string
+            format: date
+          required: true
+        - name: X-Time-Zone
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: Auth-Schema
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: apikey
+          in: header
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid status value
+  /api/gbs/banking/v4.0/accounts/{accountId}/payments/money-transfers:
+    post:
+      tags:
+        - account
+      summary: Finds accounts
+      description: Multiple status values can be provided with comma separated strings
+      operationId: createMoneyTransfer
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - name: X-Time-Zone
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: Auth-Schema
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: apikey
+          in: header
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/transferInfos'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid status value
+
+components:
+  schemas:
+    transferInfos:
+      type: object
+      properties:
+        creditor:
+            $ref: '#/components/schemas/Creditor'
+        executionDate:
+          type: string
+          format: date
+        description:
+          type: string
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+    Creditor:
+      type: object
+      properties:
+        name:
+          type: string
+        account:
+            $ref: '#/components/schemas/Account'
+    Account:
+      type: object
+      properties:
+        accountCode:
+          type: string
