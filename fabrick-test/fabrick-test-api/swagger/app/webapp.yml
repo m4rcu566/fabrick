@@ -3,9 +3,9 @@ info:
   title: Swagger Petstore - OpenAPI 3.0
   version: 1.0.11
 servers:
-  - url: https://sandbox.platfr.io
+  - url: http://localhot:8080/
 paths:
-  /api/test/account/{accountId}/balance:
+  /{accountId}/balance:
     get:
       tags:
         - accountOperations
@@ -19,24 +19,6 @@ paths:
             type: integer
             format: int64
           required: true
-        - name: X-Time-Zone
-          in: header
-          schema:
-            type: string
-            default: Europe/Rome
-          required: false
-        - name: Auth-Schema
-          in: header
-          schema:
-            type: string
-            default: S2S
-          required: false
-        - name: apikey
-          in: header
-          schema:
-            type: string
-            default: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
-          required: false
       responses:
         '200':
           description: successful operation
@@ -56,7 +38,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomErrorResponse'
-  /api/test/account/{accountId}/transactions:
+  /{accountId}/transactions:
     get:
       tags:
         - accountOperations
@@ -84,24 +66,6 @@ paths:
             format: date
             pattern: '^\d{4}-\d{2}-\d{2}$'
           required: true
-        - name: X-Time-Zone
-          in: header
-          schema:
-            type: string
-            default: Europe/Rome
-          required: false
-        - name: Auth-Schema
-          in: header
-          schema:
-            type: string
-            default: S2S
-          required: false
-        - name: apikey
-          in: header
-          schema:
-            type: string
-            default: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
-          required: false
       responses:
         '200':
           description: successful operation
@@ -121,7 +85,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomErrorResponse'
-  /api/test/account/{accountId}/payments/money-transfers:
+  /{accountId}/payments:
     post:
       tags:
         - accountOperations
@@ -135,24 +99,6 @@ paths:
             type: integer
             format: int64
           required: true
-        - name: X-Time-Zone
-          in: header
-          schema:
-            type: string
-            default: Europe/Rome
-          required: false
-        - name: Auth-Schema
-          in: header
-          schema:
-            type: string
-            default: S2S
-          required: false
-        - name: apikey
-          in: header
-          schema:
-            type: string
-            default: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
-          required: false
       requestBody:
         content:
           application/json:
@@ -182,21 +128,30 @@ components:
   schemas:
     paymentRequest:
       type: object
+      required:
+        - creditor
+        - executionDate
+        - amount
+        - currency
       properties:
         creditor:
           $ref: '#/components/schemas/Creditor'
         executionDate:
           type: string
           format: date
+          pattern: '^\d{4}-\d{2}-\d{2}$'
         description:
           type: string
         amount:
           type: number
           format: float
+          minimum: 0.1
         currency:
           type: string
     Creditor:
       type: object
+      required:
+        - account
       properties:
         name:
           type: string
@@ -204,6 +159,8 @@ components:
           $ref: '#/components/schemas/Account'
     Account:
       type: object
+      required:
+        - accountCode
       properties:
         accountCode:
           type: string

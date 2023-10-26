@@ -19,12 +19,23 @@ import jakarta.annotation.Generated;
  * Creditor
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-23T13:11:51.430867700+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-26T17:25:55.234849500+02:00[Europe/Rome]")
 public class Creditor {
 
   private String name;
 
   private Account account;
+
+  public Creditor() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Creditor(Account account) {
+    this.account = account;
+  }
 
   public Creditor name(String name) {
     this.name = name;
@@ -55,8 +66,8 @@ public class Creditor {
    * Get account
    * @return account
   */
-  @Valid 
-  @Schema(name = "account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "account", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("account")
   public Account getAccount() {
     return account;

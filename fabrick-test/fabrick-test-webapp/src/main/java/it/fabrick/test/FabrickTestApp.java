@@ -1,8 +1,5 @@
 package it.fabrick.test;
 
-import it.fabrick.test.implementations.external.feigninterface.FeignAccountApiInterface;
-import it.fabrick.test.model.repository.HistoryTransactionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -40,7 +40,7 @@ public class GetHistoryTransactionTest extends BaseControllerTest {
         Mockito.when(feignAccountApiInterface.getTransactions(anyLong(), any(LocalDate.class), any(LocalDate.class), anyString(), anyString(), anyString()))
                 .thenReturn(ResponseEntity.ok(feignResponseMocked));
 
-        String mockResponse = mockMvc.perform(get("/api/test/account/{accountId}/transactions", 14537780)
+        String mockResponse = mockMvc.perform(get("/api/test/v1/account/{accountId}/transactions", 14537780)
                         .param("fromDate", "2019-01-01")
                         .param("toDate","2019-04-01")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -68,7 +68,7 @@ public class GetHistoryTransactionTest extends BaseControllerTest {
                         .body(mockResponseFeignError().getBytes())
                         .build()));
 
-        String mockResponse = mockMvc.perform(get("/api/test/account/{accountId}/transactions", 14537780)
+        String mockResponse = mockMvc.perform(get("/api/test/v1/account/{accountId}/transactions", 14537780)
                         .param("fromDate", "2020-01-01")
                         .param("toDate","2019-04-01")
                         .contentType(MediaType.APPLICATION_JSON)

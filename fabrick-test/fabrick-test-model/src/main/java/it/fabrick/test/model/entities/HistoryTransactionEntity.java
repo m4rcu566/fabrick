@@ -2,6 +2,7 @@ package it.fabrick.test.model.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -24,11 +25,14 @@ public class HistoryTransactionEntity {
     @JoinColumn(name = "id_type")
     private HistoryTransactionTypeEntity type;
     @Column(name="amount")
-    private Float amount;
+    private BigDecimal amount;
     @Column(name="currency")
     private String currency;
     @Column(name="description")
     private String description;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "account_id")
+    private UserAccount account;
 
     public Long getId() {
         return id;
@@ -70,11 +74,11 @@ public class HistoryTransactionEntity {
         this.valueDate = valueDate;
     }
 
-    public Float getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -100,5 +104,13 @@ public class HistoryTransactionEntity {
 
     public void setType(HistoryTransactionTypeEntity type) {
         this.type = type;
+    }
+
+    public UserAccount getAccount() {
+        return account;
+    }
+
+    public void setAccount(UserAccount account) {
+        this.account = account;
     }
 }

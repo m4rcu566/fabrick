@@ -18,12 +18,23 @@ import jakarta.annotation.Generated;
  * Account
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-23T13:11:51.430867700+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-26T17:25:55.234849500+02:00[Europe/Rome]")
 public class Account {
 
   private String accountCode;
 
   private String bicCode;
+
+  public Account() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Account(String accountCode) {
+    this.accountCode = accountCode;
+  }
 
   public Account accountCode(String accountCode) {
     this.accountCode = accountCode;
@@ -34,8 +45,8 @@ public class Account {
    * Get accountCode
    * @return accountCode
   */
-  
-  @Schema(name = "accountCode", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "accountCode", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accountCode")
   public String getAccountCode() {
     return accountCode;

@@ -1,3 +1,9 @@
+CREATE TABLE IF NOT EXISTS account (
+    account_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    enumeration VARCHAR(255),
+    value_enum VARCHAR(255)
+);
+
 CREATE TABLE IF NOT EXISTS history_transaction_type (
     id_type BIGINT PRIMARY KEY AUTO_INCREMENT,
     enumeration VARCHAR(255),

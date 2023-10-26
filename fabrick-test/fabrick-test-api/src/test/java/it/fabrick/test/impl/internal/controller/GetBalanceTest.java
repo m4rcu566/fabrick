@@ -41,7 +41,7 @@ public class GetBalanceTest extends BaseControllerTest {
         Mockito.when(feignAccountApiInterface.getBalance(anyLong(), anyString(), anyString(), anyString()))
                 .thenReturn(ResponseEntity.ok(feignResponseMocked));
 
-        String mockResponse = mockMvc.perform(get("/api/test/account/{accountId}/balance", 14537780)
+        String mockResponse = mockMvc.perform(get("/api/test/v1/account/{accountId}/balance", 14537780)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
@@ -65,7 +65,7 @@ public class GetBalanceTest extends BaseControllerTest {
                         .body(mockResponseFeignError().getBytes())
                         .build()));
 
-        String mockResponse = mockMvc.perform(get("/api/test/account/{accountId}/balance", 1453778)
+        String mockResponse = mockMvc.perform(get("/api/test/v1/account/{accountId}/balance", 1453778)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is4xxClientError())

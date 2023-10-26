@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("paymentRequest")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-23T13:11:51.430867700+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-26T17:25:55.234849500+02:00[Europe/Rome]")
 public class PaymentRequest {
 
   private Creditor creditor;
@@ -37,6 +37,20 @@ public class PaymentRequest {
 
   private String currency;
 
+  public PaymentRequest() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public PaymentRequest(Creditor creditor, LocalDate executionDate, Float amount, String currency) {
+    this.creditor = creditor;
+    this.executionDate = executionDate;
+    this.amount = amount;
+    this.currency = currency;
+  }
+
   public PaymentRequest creditor(Creditor creditor) {
     this.creditor = creditor;
     return this;
@@ -46,8 +60,8 @@ public class PaymentRequest {
    * Get creditor
    * @return creditor
   */
-  @Valid 
-  @Schema(name = "creditor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "creditor", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("creditor")
   public Creditor getCreditor() {
     return creditor;
@@ -66,8 +80,8 @@ public class PaymentRequest {
    * Get executionDate
    * @return executionDate
   */
-  @Valid 
-  @Schema(name = "executionDate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") 
+  @Schema(name = "executionDate", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("executionDate")
   public LocalDate getExecutionDate() {
     return executionDate;
@@ -104,10 +118,11 @@ public class PaymentRequest {
 
   /**
    * Get amount
+   * minimum: 0.1
    * @return amount
   */
-  
-  @Schema(name = "amount", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @DecimalMin("0.1") 
+  @Schema(name = "amount", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("amount")
   public Float getAmount() {
     return amount;
@@ -126,8 +141,8 @@ public class PaymentRequest {
    * Get currency
    * @return currency
   */
-  
-  @Schema(name = "currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("currency")
   public String getCurrency() {
     return currency;

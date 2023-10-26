@@ -14,3 +14,10 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+properties:
+  fabrick:
+    headers:
+      x-time-zone: "Europe/Rome"
+      auth-schema: "S2S"
+      api-key: "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP"

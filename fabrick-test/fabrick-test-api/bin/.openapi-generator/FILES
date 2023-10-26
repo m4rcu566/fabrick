@@ -1,7 +1,0 @@
-src/main/java/it/fabrick/test/autogen/internal/api/AccountOperationsApi.java
-src/main/java/it/fabrick/test/autogen/internal/dtos/Account.java
-src/main/java/it/fabrick/test/autogen/internal/dtos/Creditor.java
-src/main/java/it/fabrick/test/autogen/internal/dtos/CustomErrorResponse.java
-src/main/java/it/fabrick/test/autogen/internal/dtos/Error.java
-src/main/java/it/fabrick/test/autogen/internal/dtos/ModelApiResponse.java
-src/main/java/it/fabrick/test/autogen/internal/dtos/PaymentRequest.java

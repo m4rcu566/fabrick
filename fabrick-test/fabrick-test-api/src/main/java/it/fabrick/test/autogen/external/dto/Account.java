@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * Account
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-23T13:11:51.228339100+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-26T17:25:54.530122400+02:00[Europe/Rome]")
 public class Account {
 
   private String accountCode;

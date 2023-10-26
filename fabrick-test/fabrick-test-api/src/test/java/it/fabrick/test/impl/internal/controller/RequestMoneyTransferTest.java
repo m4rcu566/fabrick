@@ -48,7 +48,7 @@ public class RequestMoneyTransferTest extends BaseControllerTest {
         Mockito.when(feignAccountApiInterface.createMoneyTransfer(anyLong(), anyString(), anyString(), anyString(), any(TransferInfos.class)))
                 .thenReturn(ResponseEntity.ok(feignResponseMocked));
 
-        String mockResponse = mockMvc.perform(post("/api/test/account/{accountId}/payments/money-transfers", 14537780)
+        String mockResponse = mockMvc.perform(post("/api/test/v1/account/{accountId}/payments", 14537780)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content(JsonUtilsTest.objectToString(paymentRequest)))
@@ -80,7 +80,7 @@ public class RequestMoneyTransferTest extends BaseControllerTest {
                 .name("Marzio Rossi")
                 .account(new Account().accountCode("code")));
 
-        String mockResponse = mockMvc.perform(post("/api/test/account/{accountId}/payments/money-transfers", 14537780)
+        String mockResponse = mockMvc.perform(post("/api/test/v1/account/{accountId}/payments", 14537780)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content(JsonUtilsTest.objectToString(paymentRequest)))

@@ -36,19 +36,16 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-23T13:11:51.430867700+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-26T17:25:55.234849500+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "accountOperations", description = "the accountOperations API")
 public interface AccountOperationsApi {
 
     /**
-     * GET /api/test/account/{accountId}/balance : Finds accounts
+     * GET /{accountId}/balance : Finds accounts
      * Multiple status values can be provided with comma separated strings
      *
      * @param accountId  (required)
-     * @param xTimeZone  (optional, default to Europe/Rome)
-     * @param authSchema  (optional, default to S2S)
-     * @param apikey  (optional, default to FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP)
      * @return successful operation (status code 200)
      *         or Invalid status value (status code 400)
      *         or Invalid status value (status code 500)
@@ -72,27 +69,21 @@ public interface AccountOperationsApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/api/test/account/{accountId}/balance",
+        value = "/{accountId}/balance",
         produces = { "application/json" }
     )
     ResponseEntity<ModelApiResponse> getBalance(
-        @Parameter(name = "accountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("accountId") Long accountId,
-        @Parameter(name = "X-Time-Zone", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "X-Time-Zone", required = false, defaultValue = "Europe/Rome") String xTimeZone,
-        @Parameter(name = "Auth-Schema", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "Auth-Schema", required = false, defaultValue = "S2S") String authSchema,
-        @Parameter(name = "apikey", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "apikey", required = false, defaultValue = "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP") String apikey
+        @Parameter(name = "accountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("accountId") Long accountId
     );
 
 
     /**
-     * GET /api/test/account/{accountId}/transactions : Finds accounts
+     * GET /{accountId}/transactions : Finds accounts
      * Multiple status values can be provided with comma separated strings
      *
      * @param accountId  (required)
      * @param fromDate  (required)
      * @param toDate  (required)
-     * @param xTimeZone  (optional, default to Europe/Rome)
-     * @param authSchema  (optional, default to S2S)
-     * @param apikey  (optional, default to FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP)
      * @return successful operation (status code 200)
      *         or Invalid status value (status code 400)
      *         or Invalid status value (status code 500)
@@ -116,27 +107,21 @@ public interface AccountOperationsApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/api/test/account/{accountId}/transactions",
+        value = "/{accountId}/transactions",
         produces = { "application/json" }
     )
     ResponseEntity<ModelApiResponse> getHistoryTransaction(
         @Parameter(name = "accountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("accountId") Long accountId,
         @NotNull @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") @Parameter(name = "fromDate", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "fromDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-        @NotNull @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") @Parameter(name = "toDate", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "toDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate,
-        @Parameter(name = "X-Time-Zone", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "X-Time-Zone", required = false, defaultValue = "Europe/Rome") String xTimeZone,
-        @Parameter(name = "Auth-Schema", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "Auth-Schema", required = false, defaultValue = "S2S") String authSchema,
-        @Parameter(name = "apikey", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "apikey", required = false, defaultValue = "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP") String apikey
+        @NotNull @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") @Parameter(name = "toDate", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "toDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate
     );
 
 
     /**
-     * POST /api/test/account/{accountId}/payments/money-transfers : Finds accounts
+     * POST /{accountId}/payments : Finds accounts
      * Multiple status values can be provided with comma separated strings
      *
      * @param accountId  (required)
-     * @param xTimeZone  (optional, default to Europe/Rome)
-     * @param authSchema  (optional, default to S2S)
-     * @param apikey  (optional, default to FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP)
      * @param paymentRequest  (optional)
      * @return successful operation (status code 200)
      *         or Invalid status value (status code 400)
@@ -161,15 +146,12 @@ public interface AccountOperationsApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/api/test/account/{accountId}/payments/money-transfers",
+        value = "/{accountId}/payments",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
     ResponseEntity<ModelApiResponse> requestMoneyTransfer(
         @Parameter(name = "accountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("accountId") Long accountId,
-        @Parameter(name = "X-Time-Zone", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "X-Time-Zone", required = false, defaultValue = "Europe/Rome") String xTimeZone,
-        @Parameter(name = "Auth-Schema", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "Auth-Schema", required = false, defaultValue = "S2S") String authSchema,
-        @Parameter(name = "apikey", description = "", in = ParameterIn.HEADER) @RequestHeader(value = "apikey", required = false, defaultValue = "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP") String apikey,
         @Parameter(name = "PaymentRequest", description = "") @Valid @RequestBody(required = false) PaymentRequest paymentRequest
     );
 

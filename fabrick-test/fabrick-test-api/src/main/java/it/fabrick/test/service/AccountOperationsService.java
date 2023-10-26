@@ -6,9 +6,9 @@ import java.time.LocalDate;
 
 public interface AccountOperationsService {
 
-    String getBalance(Long accountId, String xTimeZone, String authSchema, String apikey);
+    String getBalance(Long accountId);
 
-    String getHistoryTransaction(Long accountId, LocalDate fromDate, LocalDate toDate, String xTimeZone, String authSchema, String apikey);
+    String getHistoryTransaction(Long accountId, LocalDate fromDate, LocalDate toDate);
 
-    String requestMoneyTransfer(Long accountId, String xTimeZone, String authSchema, String apikey, PaymentRequest paymentRequest);
+    String requestMoneyTransfer(Long accountId, PaymentRequest paymentRequest);
 }
